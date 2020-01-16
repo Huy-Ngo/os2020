@@ -1,6 +1,6 @@
 Here are the commands and output for practical work 2:
 
-```
+```shell
 > ls -la | grep list
 (no file containing "list", so no output here)
 > wc /etc/passwd | awk '{print $1}' 

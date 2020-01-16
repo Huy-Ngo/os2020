@@ -1,6 +1,6 @@
 Here are the commands and outputs for practical work 1:
 
-```
+```shell
 > echo hello world
 hello world
 > passwd

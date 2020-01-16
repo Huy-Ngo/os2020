@@ -1,6 +1,6 @@
 Here are the commands and outputs for the labwork 3:
 
-```
+```shell
 > ps -e | tail -10
   3860 ?        00:00:00 kworker/0:5-events
   4258 pts/1    00:00:00 bash
