@@ -29,23 +29,24 @@ def gantt_rr():
     not reusable anywhere
     """
     burst = [80, 40, 10, 50]
-    # start = [0, 4, 10, 13]
+    start = [0, 4, 10, 13]
+    wait = [0] * 4
     s = 10
     current = 0
-    wait = [0] * 4
     chart = [''] * 4
     queue = [True] * 4  # I know it's not a queue, please don't care
     time = 0
     while sum(burst) > 0:
         burst[current] -= 10
-        wait[current] += 10
         chart[current] += '-' * 10
+        wait[current] += time - start[current]
         for i in range(4):
             if i != current:
                 chart[i] += ' ' * 10
         if burst[current] == 0:
             queue[current] = False
         time += 10
+        start[current] = time
         # when proc 1 finishes first interval, the 3rd one already starts
         # so don't need to take care of it.
         nxt = (current + 1) % 4
@@ -56,6 +57,7 @@ def gantt_rr():
     for i in range(4):
         print(f'P_{i + 1}:', chart[i])
     print(wait)
+
 
 parser = ArgumentParser()
 parser.add_argument('--rr', type=bool, nargs='?', const=True, default=False)
